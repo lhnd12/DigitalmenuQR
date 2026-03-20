@@ -2,7 +2,7 @@
 
 A high-end, high-performance digital menu solution designed for Luxury Restaurants, Lounges, and Boutique Hotels. Built with a focus on "Mobile-First" experience and "Tesla-inspired" fluid animations.
 
-[Live Demo Link Here] ---
+[Live Demo Link Here] [---](https://lhnd12.github.io/DigitalmenuQR/main.html)
 
 ## ✨ Key Features
 
@@ -45,4 +45,4 @@ A high-end, high-performance digital menu solution designed for Luxury Restauran
 
 This project was developed as a premium portfolio piece for **Fiverr Elite Web Development Services**. 
 
-Developed with ❤️ by [Your Name/Brand]
+Developed with ❤️ by [MedmeinHND]
