@@ -1,0 +1,249 @@
+/* --- GIOIA CASABLANCA: LUXURY DESIGN SYSTEM --- */
+:root {
+    --gioia-green: #051410;    /* Emerald Signature */
+    --gold: #C5A059;          /* Champagne Gold */
+    --gold-bright: #D4AF37;   /* Tesla-style Gold */
+    --dark-bg: #040404;       /* Pure Matte Black */
+    --text-grey: #8E8E8E;     /* Apple-style Grey */
+    --white: #FAF9F6;         /* Off-White for Luxury */
+}
+
+/* Base Reset */
+* { 
+    box-sizing: border-box; 
+    margin: 0; 
+    padding: 0; 
+    -webkit-tap-highlight-color: transparent; 
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--dark-bg);
+    font-family: 'Montserrat', sans-serif;
+    color: var(--white);
+    overflow-x: hidden;
+}
+
+/* --- 1. APPLE x TESLA LOADER (Centered) --- */
+#loader {
+    position: fixed; inset: 0; background: var(--gioia-green); z-index: 9999;
+    display: flex; align-items: center; justify-content: center;
+    transition: transform 1.2s cubic-bezier(0.8, 0, 0.2, 1), opacity 0.8s ease;
+}
+
+.loader-inner { display: flex; flex-direction: column; align-items: center; }
+
+.logo-circle-wrapper {
+    position: relative; width: 130px; height: 130px; margin-bottom: 25px;
+}
+
+.loader-logo-circle {
+    width: 100%; height: 100%; border-radius: 50%; object-fit: cover; 
+    border: 1px solid var(--gold);
+    animation: appleScale 1.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.apple-ring {
+    position: absolute; inset: -8px; border-radius: 50%;
+    border: 1px solid rgba(197, 160, 89, 0.2);
+    animation: breathing 3s infinite ease-in-out;
+}
+
+.tesla-text-reveal { position: relative; text-align: center; overflow: hidden; }
+
+.brand-name { 
+    font-family: 'Cinzel'; font-size: 1.2rem; letter-spacing: 12px; 
+    color: var(--gold); opacity: 0; 
+    animation: fadeText 1s 0.8s forwards; 
+}
+
+.brand-sub { 
+    font-size: 0.6rem; letter-spacing: 5px; color: var(--gold); 
+    margin-top: 5px; opacity: 0; 
+    animation: fadeText 1s 1s forwards; 
+}
+
+.scan-line {
+    position: absolute; bottom: 0; left: 0; width: 100%; height: 1px;
+    background: var(--gold-bright); transform: translateX(-105%);
+    animation: teslaScan 1.5s 0.5s cubic-bezier(0.7, 0, 0.3, 1) forwards;
+}
+
+@keyframes appleScale { 0% { transform: scale(0.8); opacity: 0; filter: blur(10px); } 100% { transform: scale(1); opacity: 1; filter: blur(0); } }
+@keyframes teslaScan { 0% { transform: translateX(-105%); } 50% { transform: translateX(0); } 100% { transform: translateX(105%); } }
+@keyframes fadeText { to { opacity: 1; letter-spacing: 15px; } }
+@keyframes breathing { 0%, 100% { transform: scale(1); opacity: 0.1; } 50% { transform: scale(1.1); opacity: 0.3; } }
+
+/* --- 2. HERO SECTION --- */
+.hero-premium {
+    height: 50vh; position: relative; display: flex; align-items: center; justify-content: center; text-align: center;
+}
+.hero-bg { position: absolute; inset: 0; background-size: cover; background-position: center; filter: brightness(0.4); }
+.hero-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, transparent, var(--dark-bg)); }
+.hero-content { z-index: 10; }
+.hero-title { font-family: 'Cinzel'; font-size: 4rem; letter-spacing: 18px; margin: 15px 0; }
+.hero-tag { font-size: 0.7rem; letter-spacing: 6px; color: var(--gold); }
+.gold-dash { width: 40px; height: 1px; background: var(--gold); margin: 0 auto; }
+
+/* --- 3. ELITE NAVIGATION --- */
+.elite-nav {
+    display: flex; gap: 30px; padding: 30px 40px; background: var(--dark-bg);
+    position: sticky; top: 0; z-index: 100; overflow-x: auto; 
+    scrollbar-width: none; border-bottom: 1px solid rgba(197, 160, 89, 0.1);
+}
+.elite-nav::-webkit-scrollbar { display: none; }
+
+.cat-item {
+    background: none; border: none; color: var(--text-grey); font-size: 0.65rem;
+    letter-spacing: 3px; cursor: pointer; transition: 0.4s; white-space: nowrap;
+}
+.cat-item.active { color: var(--gold); font-weight: 600; }
+
+/* --- 4. MENU ITEMS & SCROLL REVEAL --- */
+.items-stack { 
+    max-width: 750px; 
+    margin: 0 auto; 
+    padding: 40px 25px 0px; /* Ziyerna l-padding dial l-lekhir */
+}
+
+.item-card { 
+    margin-bottom: 40px; 
+    opacity: 0; 
+    transform: translateY(40px); /* Start position l-l-reveal */
+    transition: all 0.9s cubic-bezier(0.16, 1, 0.3, 1); 
+    border-bottom: 1px solid rgba(197, 160, 89, 0.05);
+    padding-bottom: 25px;
+}
+
+/* Had l-class t-at-zad b'Intersection Observer */
+.item-card.reveal { 
+    opacity: 1; 
+    transform: translateY(0); 
+}
+
+.item-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 10px; }
+.item-title { font-family: 'Cinzel'; font-size: 1.1rem; letter-spacing: 2px; color: var(--white); }
+.item-price { color: var(--gold); font-size: 1rem; font-weight: 300; }
+.item-desc { font-size: 0.8rem; color: var(--text-grey); font-weight: 200; line-height: 1.7; font-style: italic; }
+
+/* --- 5. COMPACT PAGINATION (Fixed Distance) --- */
+.pagination-box {
+    text-align: center;
+    padding: 20px 0 100px;
+    margin-top: 0;
+}
+
+#show-more-btn {
+    background: rgba(197, 160, 89, 0.05);
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    padding: 14px 40px;
+    font-family: 'Cinzel';
+    letter-spacing: 4px;
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: 0.4s;
+    backdrop-filter: blur(5px);
+}
+
+#show-more-btn:hover {
+    background: var(--gold);
+    color: var(--gioia-green);
+    transform: translateY(-3px);
+}
+
+/* --- 6. ACTION BAR & SEARCH --- */
+.action-bar {
+    position: fixed; bottom: 35px; left: 50%; transform: translateX(-50%);
+    background: rgba(10, 10, 10, 0.95); border: 1px solid var(--gold);
+    display: flex; align-items: center; z-index: 500; backdrop-filter: blur(10px);
+}
+.search-trigger, .book-trigger { padding: 15px 25px; font-size: 0.65rem; letter-spacing: 3px; cursor: pointer; color: var(--white); text-decoration: none; }
+.book-trigger { background: var(--gold); color: var(--dark-bg); font-weight: 700; }
+.v-line { width: 1px; height: 20px; background: rgba(197, 160, 89, 0.3); }
+
+.search-overlay {
+    position: fixed; inset: 0; background: var(--gioia-green); z-index: 2000;
+    display: none; align-items: center; justify-content: center; padding: 40px;
+    animation: fadeIn 0.4s ease;
+}
+
+#menu-search {
+    background: none; border: none; border-bottom: 1px solid var(--gold);
+    color: var(--white); font-size: 2rem; font-family: 'Cinzel'; width: 100%; text-align: center;
+    outline: none;
+}
+
+.no-results { text-align: center; color: var(--text-grey); font-family: 'Cinzel'; padding: 50px; letter-spacing: 2px; }
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+/* Style dial l-counter sghir */
+.cat-count {
+    font-size: 0.55rem;
+    opacity: 0.5;
+    margin-left: 5px;
+    vertical-align: super;
+}
+
+.cat-item.active .cat-count {
+    color: var(--gold-bright);
+    opacity: 1;
+}
+
+/* Image Detail Modal (Pro Touch) */
+.item-detail-overlay {
+    position: fixed; inset: 0; background: rgba(0,0,0,0.9);
+    z-index: 3000; display: none; align-items: center; justify-content: center;
+    backdrop-filter: blur(15px); animation: fadeIn 0.4s ease;
+}
+
+.detail-card {
+    width: 85%; max-width: 400px; text-align: center;
+}
+
+.detail-img {
+    width: 100%; border-radius: 15px; border: 1px solid var(--gold);
+    margin-bottom: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+}
+/* Navigation Icons (L-fou9) */
+.cat-svg-wrapper svg {
+    width: 18px;  /* Sghar o discrete */
+    height: 18px;
+    stroke: var(--gold);
+    margin-bottom: 8px;
+    opacity: 0.6;
+    transition: 0.3s;
+}
+
+.cat-item.active .cat-svg-wrapper svg {
+    opacity: 1;
+    stroke: var(--gold-bright);
+    filter: drop-shadow(0 0 5px var(--gold));
+}
+
+/* Product Icons (West l-list) */
+.elite-icon-mini svg {
+    width: 13px; /* Sghira bzaf b7al chi Signature */
+    height: 13px;
+    stroke: var(--gold);
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+/* L-Title dial l-plat i-welli m9ad m3a l-icon */
+.item-title-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+}
+
+.item-title {
+    font-size: 0.95rem; /* Sgherna l-khalis bach i-ban Elite */
+    font-weight: 400;
+    letter-spacing: 1px;
+}
+

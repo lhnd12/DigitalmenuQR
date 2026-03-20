@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>GIOIA Casablanca | Excellence Italienne</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@100;200;300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+
+    <div id="loader">
+        <div class="loader-inner">
+            <div class="logo-circle-wrapper">
+                <img src="images/logo.jpg" class="loader-logo-circle" alt="GIOIA Luxury">
+                <div class="apple-ring"></div>
+            </div>
+            <div class="tesla-text-reveal">
+                <span class="brand-name">GIOIA</span>
+                <p class="brand-sub">CASABLANCA</p>
+                <div class="scan-line"></div>
+            </div>
+        </div>
+    </div>
+
+    <header class="hero-premium">
+        <div class="hero-bg" style="background-image: url('images/event3.jpg');"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <p class="hero-tag">MAISON D'EXCEPTION</p>
+            <h1 class="hero-title">GIOIA</h1>
+            <div class="gold-dash"></div>
+        </div>
+    </header>
+
+    <nav class="elite-nav" id="category-nav"></nav>
+
+    <main class="menu-wrap">
+        <div id="items-grid" class="items-stack">
+            </div>
+        
+        <div id="pagination-container" class="pagination-box">
+            <button id="show-more-btn" onclick="showMore()">VOIR PLUS DE DÉLICES</button>
+        </div>
+    </main>
+
+    <div class="action-bar">
+        <div class="search-trigger" onclick="toggleSearch()">RECHERCHER</div>
+        <div class="v-line"></div>
+        <a href="https://wa.me/212622871718?text=Bonjour%20GIOIA,%20je%20souhaite%20réserver%20une%20table." class="book-trigger">RÉSERVER</a>
+    </div>
+
+    <div id="search-overlay" class="search-overlay">
+        <div class="close-search" onclick="toggleSearch()">✕</div>
+        <div class="search-box">
+            <input type="text" id="menu-search" placeholder="Quel délice cherchez-vous ?" autocomplete="off">
+            <div class="search-line"></div>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
